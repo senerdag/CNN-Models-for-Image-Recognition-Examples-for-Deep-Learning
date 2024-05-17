@@ -7,7 +7,7 @@ import pathlib
 
 
 # Specify the data set path
-data_dir = "/content/drive/MyDrive/App/Mush2"
+data_dir = "/content/drive/MyDrive/Mush"
 
 # Configure data loading()
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
@@ -55,13 +55,12 @@ history = model.fit(
 
 
 # File path of the photo to be tested
-test_image_path = "/content/drive/MyDrive/App/TestMussssh/1655108.jpg"
+test_image_path = "/content/drive/MyDrive/test/1655108.jpg"
 
 # Upload the photo and adjust its size and number of channels (RGB)
 img = image.load_img(test_image_path, target_size=(180, 180))
 img_array = image.img_to_array(img)
-img_array = np.expand_dims(img_array, axis=0)  # Batch boyutu ekleyin
-
+img_array = np.expand_dims(img_array, axis=0)  
 # Make the model predict
 predictions = model.predict(img_array)
 predicted_class_index = np.argmax(predictions[0])
